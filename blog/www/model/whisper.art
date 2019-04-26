@@ -1,0 +1,81 @@
+{{extend './layout.art'}}
+{{block 'content'}}
+<div class="content whisper-content">
+    <div class="cont">
+      <div class="whisper-list">
+      {{each whisper item}}
+        <div class="item-box">
+          <div class="item">
+            <div class="whisper-title">
+              <i class="layui-icon layui-icon-date"></i><span class="hour">{{item.hour}}</span><span class="date">{{item.date}}</span>
+            </div>
+            <p class="text-cont">
+            {{item.content}}
+            </p>
+            <div class="img-box">
+              <img src="../res/img/wy_img1.jpg">
+            </div>
+            <div class="op-list">
+              <p class="like"><i class="layui-icon layui-icon-praise"></i><span>1200</span></p> 
+              <p class="edit"><i class="layui-icon layui-icon-reply-fill"></i><span>1200</span></p>
+              <p class="off"><span>展开</span><i class="layui-icon layui-icon-down"></i></p>
+            </div>
+          </div>
+          <div class="review-version layui-hide">
+              <div class="form">
+                <img src="../res/img/header2.png">
+                <form class="layui-form" action="">
+                  <div class="layui-form-item layui-form-text">
+                    <div class="layui-input-block">
+                      <textarea name="desc" class="layui-textarea"></textarea>
+                    </div>
+                  </div>
+                  <div class="layui-form-item">
+                    <div class="layui-input-block" style="text-align: right;">
+                      <button class="layui-btn definite">確定</button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+              <div class="list-cont">
+                {{each item.message}}
+                <div class="cont">
+                  <div class="img">
+                    <img src={{$value.userIcon}} alt="">
+                  </div>
+                  <div class="text">
+                    <p class="tit"><span class="name">吳亦凡</span><span class="data">{{$value.date}}</span></p>
+                    <p class="ct">{{$value.cont}}</p>
+                  </div>
+                </div>
+               {{/each}}
+              </div>
+          </div>
+        </div>
+       {{/each}}
+      </div>
+      <div id="demo" style="text-align: center;"></div>
+    </div>
+  </div>
+{{/block}}
+{{block 'script'}}
+<script type="text/javascript">
+$(function(){
+  
+  $('.off').click(function(){
+    // 判断是否展开
+    var isUnfold = $(this).parents('.item-box').find('.review-version').hasClass('layui-hide');
+    if(isUnfold){
+      $(this).parents('.item-box').find('.review-version').removeClass('layui-hide');
+      $(this).find('span').text('收起');
+      $(this).find('i').removeClass(' layui-icon-down').addClass(' layui-icon-up');
+    }else{
+      $(this).parents('.item-box').find('.review-version').addClass('layui-hide');
+      $(this).find('span').text('展开');
+      $(this).find('i').removeClass(' layui-icon-up').addClass(' layui-icon-down');
+    }
+  })
+  98
+})
+</script>
+{{/block}}
