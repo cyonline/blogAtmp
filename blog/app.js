@@ -3,6 +3,7 @@ const app = express();
 // app.use(express.static(__dirname+'/html'));
 // 静态资源目录
 app.use('/res', express.static('./www/res'))
+app.use('/script', express.static('./www/script'))
 //模板引擎
 app.engine('art', require('express-art-template'));
 // 注意:如果不想把模板文件放在默认的views目录下,则可以通过下面代码更改设置
@@ -11,6 +12,7 @@ app.set('views', './www/model');
 app.get('', function (req, res) {
     console.info('这是根目录');
     res.render('index.art', {
+        index:'1',
         user: {
             name: 'My',
             data: [
@@ -26,6 +28,7 @@ app.get('', function (req, res) {
 
 app.get('/whisper',function (req,res) {
     res.render('whisper.art',{
+        index:'2',
         whisper:[
             {   
                 headImg:'../res/img/header2.png',
@@ -42,8 +45,30 @@ app.get('/whisper',function (req,res) {
 })
 
 app.get('/details/:id',function(req,res){
-    res.render('details.art',{})
+    res.render('details.art',{
+        index:'1'
+    })
 })
+app.get('/leacots',(req,res)=>{
+    res.render('leacots.art',{
+        index:'3'
+    })
+})
+app.get('/album', (req, res) => {
+    res.render('album.art', {
+        index: '4'
+    })
+})
+app.get('/about', (req, res) => {
+    res.render('about.art', {
+        index: '5'
+    })
+})
+
+app.get('**',(req,res)=>{
+    res.send('404');
+})
+
 app.listen(3000,res=>{
     console.log('server is running!')
 })

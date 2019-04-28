@@ -25,18 +25,18 @@
       </a>
     </h1>
     <div class="nav">
-      <a href="/" class="active">文章</a>
-      <a href="/whisper">微语</a>
-      <a href="/leacots">留言</a>
-      <a href="/album">相册</a>
-      <a href="/about">关于</a>
+      <a href="/" class="{{if index=='1'}}active{{/if}}">文章</a>
+      <a href="/whisper" class="{{if index=='2'}}active{{/if}}">微语</a>
+      <a href="/leacots" class="{{if index=='3'}}active{{/if}}">留言</a>
+      <a href="/album" class="{{if index=='4'}}active{{/if}}">相册</a>
+      <a href="/about" class="{{if index=='5'}}active{{/if}}">关于</a>
     </div>
     <ul class="layui-nav header-down-nav">
-      <li class="layui-nav-item"><a href="index.html">文章</a></li>
-      <li class="layui-nav-item"><a href="whisper.html">微语</a></li>
-      <li class="layui-nav-item"><a href="leacots.html">留言</a></li>
-      <li class="layui-nav-item"><a href="album.html">相册</a></li>
-      <li class="layui-nav-item"><a href="about.html">关于</a></li>
+      <li class="layui-nav-item"><a href="/">文章</a></li>
+      <li class="layui-nav-item"><a href="/whisper">微语</a></li>
+      <li class="layui-nav-item"><a href="/leacots">留言</a></li>
+      <li class="layui-nav-item"><a href="/album">相册</a></li>
+      <li class="layui-nav-item"><a href="/about">关于</a></li>
     </ul>
     <p class="welcome-text">
       欢迎来到<span class="name">程宇</span>的博客~
@@ -46,7 +46,7 @@
   <div class="footer-wrap">
     <div class="footer w1000">
       <div class="qrcode">
-        <img src="../res/img/erweima.jpg">
+         <img src="../res/img/erweima.jpg">
       </div>
       <div class="practice-mode">
         <img src="../res/img/down_img.jpg">
@@ -54,12 +54,11 @@
           <h4 class="title">我的联系方式</h4>
           <p>微信<span class="WeChat">1234567890</span></p>
           <p>邮箱<span class="email">1234567890@qq.com</span></p>
-          <p>More Templates <a href="http://www.cssmoban.com/" target="_blank" title="模板之家">模板之家</a> - Collect from <a href="http://www.cssmoban.com/" title="网页模板" target="_blank">网页模板</a></p>
         </div>
       </div>
     </div>
   </div>
-  <script type="text/javascript" src="jquery-2.0.3.js"></script>
+  <script type="text/javascript" src="../res/js/jquery-2.0.3.js"></script>
   {{block 'script'}}{{/block}}
   </body>
   </html>

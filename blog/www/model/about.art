@@ -1,1 +1,54 @@
-{{extend './head.art'}}
+{{extend './layout.art'}}
+{{block 'content'}}
+  <div class="about-content">
+    <div class="w1000">
+      <div class="item info">
+        <div class="title">
+          <h3>我的介绍</h3>
+        </div>
+        <div class="cont">
+          <img src="../res/img/xc_img1.jpg">
+          <div class="per-info">
+            <p>
+              <span class="name">{{name}}</span><br />
+              <span class="age">{{age}}岁</span><br />
+              <span class="Career">{{job}}</span><br />
+              <span class="interest">爱好旅游,打游戏</span>
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="item tool">
+        <div class="title">
+          <h3>我的技能</h3>
+        </div>
+        <div class="layui-fluid">
+          <div class="layui-row">
+            <div class="layui-col-xs6 layui-col-sm3 layui-col-md3">
+              <div class="cont-box">
+                <img src="../res/img/gr_img2.jpg">
+                <p>80%</p>
+              </div>
+            </div>
+            <div class="layui-col-xs6 layui-col-sm3 layui-col-md3">
+              <div class="cont-box">
+                <img src="../res/img/gr_img3.jpg">
+                <p>80%</p>
+              </div>
+            </div>
+            <div class="layui-col-xs6 layui-col-sm3 layui-col-md3">
+              <div class="cont-box">
+                <img src="../res/img/gr_img4.jpg">
+                <p>80%</p>
+              </div>
+            </div>
+            <div class="layui-col-xs6 layui-col-sm3 layui-col-md3">
+              <div class="cont-box">
+                <img src="../res/img/gr_img5.jpg">
+                <p>80%</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+{{/block}}
