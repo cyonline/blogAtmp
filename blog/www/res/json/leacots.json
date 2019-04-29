@@ -1,0 +1,20 @@
+[
+    {
+        "user_name":"路飞",
+        "user_icon":"../res/img/userIcon/luffy.jpg",
+        "date":"2019/04/29",
+        "user_txt":"我是要成为海贼王的男人!"
+    },
+    {
+        "user_name": "索隆",
+        "user_icon": "../res/img/userIcon/zorro.jpg",
+        "date": "2019/04/29",
+        "user_txt": "背后的伤痕是剑士的耻辱!"
+    },
+    {
+        "user_name": "山治",
+        "user_icon": "../res/img/userIcon/sanji.jpg",
+        "date": "2019/04/29",
+        "user_txt": "能原谅女人谎言的才是真正的男人!"
+    }
+]

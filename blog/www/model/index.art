@@ -4,7 +4,6 @@
     <div class="cont w1000">
       <div class="title">
         <h3>{{user.name}}<br />BLOG</h3>
-        <h4>well-balanced heart</h4>
       </div>
       <div class="amount">
         <p><span class="text">访问量</span><span class="access">1000</span></p>
@@ -48,5 +47,6 @@
   
 {{/block}}
 {{block 'script'}}
+ <script type="text/javascript" src="../res/layui/layui.js"></script>
 <script type="text/javascript" src="../script/index.js"></script>
 {{/block}}

@@ -1,5 +1,9 @@
 const express = require('express');
 const app = express();
+// 引入文件模块(内置);
+const fs = require('fs');
+// 对请求进行处理的中间件
+const bodyPaser = require('body-parser');
 // app.use(express.static(__dirname+'/html'));
 // 静态资源目录
 app.use('/res', express.static('./www/res'))
@@ -8,23 +12,38 @@ app.use('/script', express.static('./www/script'))
 app.engine('art', require('express-art-template'));
 // 注意:如果不想把模板文件放在默认的views目录下,则可以通过下面代码更改设置
 app.set('views', './www/model');
-
+app.use(bodyPaser.urlencoded({extended:true}))
+// fs.readFile('./www/res/json/article.json', 'UTF-8',(err, res) => {
+//     if (err) {
+//         console.error(err)
+//     }
+//     console.log(res.toString());
+// })
 app.get('', function (req, res) {
     console.info('这是根目录');
-    res.render('index.art', {
-        index:'1',
-        user: {
-            name: 'My',
-            data: [
-                { img: '../res/img/sy_img1.jpg', title: '空间立体效果图，完美呈现最终效果', text:'室内设计作为一门新兴的学科，尽管还只是近数十年的事，但是人们有意识地对自己生活、生产活动的室内进行安排布置，甚至美化装饰，赋予室内环境以所祈使的气氛，却早巳从人类文明伊始的时期就已存在'},
-                { img: '../res/img/sy_img2.jpg', title: '空间立体效果图，完美呈现最终效果', text:'室内设计作为一门新兴的学科，尽管还只是近数十年的事，但是人们有意识地对自己生活、生产活动的室内进行安排布置，甚至美化装饰，赋予室内环境以所祈使的气氛，却早巳从人类文明伊始的时期就已存在'},
-                { img: '../res/img/sy_img3.jpg', title: '空间立体效果图，完美呈现最终效果', text:'室内设计作为一门新兴的学科，尽管还只是近数十年的事，但是人们有意识地对自己生活、生产活动的室内进行安排布置，甚至美化装饰，赋予室内环境以所祈使的气氛，却早巳从人类文明伊始的时期就已存在'},
-                { img: '../res/img/sy_img4.jpg', title: '空间立体效果图，完美呈现最终效果', text:'室内设计作为一门新兴的学科，尽管还只是近数十年的事，但是人们有意识地对自己生活、生产活动的室内进行安排布置，甚至美化装饰，赋予室内环境以所祈使的气氛，却早巳从人类文明伊始的时期就已存在'},
-                { img: '../res/img/sy_img5.jpg', title: '空间立体效果图，完美呈现最终效果', text:'室内设计作为一门新兴的学科，尽管还只是近数十年的事，但是人们有意识地对自己生活、生产活动的室内进行安排布置，甚至美化装饰，赋予室内环境以所祈使的气氛，却早巳从人类文明伊始的时期就已存在'},
-            ]
-        }
-    });
+    fs.readFile('./www/res/json/article.json','UTF-8', (err, data) => {
+        if (err) console.error(err);
+        var objStr = data.toString().trim();
+        var obj = JSON.parse(objStr);
+        res.render('index.art', {
+            index: '1',
+            user: {
+                name: 'My',
+                data:obj
+            }
+        });
+    })
+   
 });
+
+app.get('/details/:id', function (req, res) {
+    res.render('details.art', {
+        index: '1',
+        details:{
+            // data:data
+        }
+    })
+})
 
 app.get('/whisper',function (req,res) {
     res.render('whisper.art',{
@@ -44,19 +63,26 @@ app.get('/whisper',function (req,res) {
     })
 })
 
-app.get('/details/:id',function(req,res){
-    res.render('details.art',{
-        index:'1'
-    })
-})
 app.get('/leacots',(req,res)=>{
-    res.render('leacots.art',{
-        index:'3'
+    fs.readFile('./www/res/json/leacots.json', 'UTF-8',(err,data)=>{
+        if (err) console.error(err);
+        var objStr = data.toString().trim();
+        var obj = JSON.parse(objStr);
+        res.render('leacots.art', {
+            index: '3',
+            data: {
+                data: obj
+            }
+        })
     })
+    
 })
 app.get('/album', (req, res) => {
     res.render('album.art', {
-        index: '4'
+        index: '4',
+        data:{
+
+        }
     })
 })
 app.get('/about', (req, res) => {
@@ -67,6 +93,10 @@ app.get('/about', (req, res) => {
 
 app.get('**',(req,res)=>{
     res.send('404');
+})
+
+app.post('',(req,res)=>{
+    
 })
 
 app.listen(3000,res=>{
